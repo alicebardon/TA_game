@@ -1,0 +1,7 @@
+<h1>Result</h1>
+
+<% if @word_letters.all? { |l| @letters.split.include?(l) } %>
+<p>Yaaay, tu as utilisé les bonnes lettres</p>
+<% else %>
+<p>Wrong letters</p>
+<% end %>

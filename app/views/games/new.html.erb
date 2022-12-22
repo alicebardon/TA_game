@@ -1,0 +1,19 @@
+<h1>New game</h1>
+
+<ul>
+  <% @letters.each do |letter| %>
+  <span class="blue_square">  <%= letter.capitalize %> </span>
+  <% end %>
+</ul>
+
+
+<form action="/score" method="post" data-turbo="false">
+  <label for="word">What is the longest word youcan find ?</label>
+  <input type="text" name="word">
+  <input type="submit">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+</form>
+
+
+<%= link_to "Play Again", new_path %>
