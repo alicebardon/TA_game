@@ -1,3 +1,5 @@
+require "open-uri"
+
 class GamesController < ApplicationController
 
   def new
@@ -8,12 +10,16 @@ class GamesController < ApplicationController
     @letters = params[:letters]
     @word = params[:word]
     @word_letters = @word.split("")
+    @valide = valide_word?(@word)
   end
 end
 
 
 private
 
-def included?
-
+def valide_word?(word)
+  url = "https://wagon-dictionary.herokuapp.com/#{word}"
+  response = URI.open(url).read
+  parsing = JSON.parse(response)
+  parsing['found']
 end

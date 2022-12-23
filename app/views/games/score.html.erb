@@ -1,7 +1,14 @@
 <h1>Result</h1>
 
 <% if @word_letters.all? { |l| @letters.split.include?(l) } %>
-<p>Yaaay, tu as utilisé les bonnes lettres</p>
+  <% if @valide %>
+    <p>Congrats, it's a valid word !</p>
+  <% else %>
+    <p>Oops, this word doesn't exist</p>
+  <% end %>
 <% else %>
-<p>Wrong letters</p>
+  <p>The word does not match the avaible letters</p>
 <% end %>
+
+
+<%= link_to "Play Again", new_path %>
